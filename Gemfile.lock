@@ -3,6 +3,7 @@ GEM
   specs:
     agoo (2.14.1)
     sequel (5.53.0)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   x86_64-darwin-20
@@ -10,6 +11,7 @@ PLATFORMS
 DEPENDENCIES
   agoo
   sequel
+  zeitwerk
 
 BUNDLED WITH
    2.3.3

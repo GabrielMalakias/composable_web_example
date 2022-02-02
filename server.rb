@@ -1,14 +1,8 @@
 require 'agoo'
+require 'loader'
 
-Agoo::Server.init(6464, 'root')
+Agoo::Server.init(3000, 'root')
 
-class MyHandler
-  def call(req)
-    [ 200, { }, [ "hello world" ] ]
-  end
-end
-
-handler = MyHandler.new
-Agoo::Server.handle(:GET, "/hello", handler)
+Agoo::Server.handle(:GET, "/hello", HelloHandler.new)
 Agoo::Server.start()
 
