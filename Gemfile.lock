@@ -2,7 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     agoo (2.14.1)
+    rake (13.0.6)
     sequel (5.53.0)
+    sqlite3 (1.4.2)
     zeitwerk (2.5.4)
 
 PLATFORMS
@@ -10,7 +12,9 @@ PLATFORMS
 
 DEPENDENCIES
   agoo
+  rake
   sequel
+  sqlite3
   zeitwerk
 
 BUNDLED WITH
