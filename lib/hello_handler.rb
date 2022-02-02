@@ -1,7 +1,7 @@
+require 'oj'
+
 class HelloHandler
   def call(request)
-    puts DB[:authors].all.to_json
-
-    [ 200, { }, [ "hello world" ] ]
+    [ 200, { 'Content-Type' => 'application/json' }, [Oj.dump(DB[:authors].all)] ]
   end
 end
