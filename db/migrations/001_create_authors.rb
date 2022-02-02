@@ -1,12 +1,12 @@
 Sequel.migration do
-  def up
-    create_table :authors do
+  up do
+    create_table(:authors) do
       primary_key :id
-      String :name
+      String :name, null: false
     end
   end
 
-  def down
-    drop_table :authors
+  down do
+    drop_table(:authors)
   end
 end
