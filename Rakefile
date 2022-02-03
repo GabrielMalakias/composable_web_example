@@ -3,6 +3,15 @@
 require 'logger'
 require 'sequel'
 
+namespace :app do
+  desc 'Start server'
+  task :start do
+    require_relative 'application'
+
+    Application.start!
+  end
+end
+
 namespace :db do
   desc 'Run migrations'
   task :migrate, [:version] do |_t, args|

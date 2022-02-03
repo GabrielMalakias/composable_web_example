@@ -1,23 +1,23 @@
 # frozen_string_literal: true
-
-read_input_and_parse = proc do |request|
-  Oj.load(request['rack.input'].read)
-end
-
 validate = proc do |params|
-  Contract::Author.new.call(params).to_h
-end
+  result = Contract::Author.validate(params)
 
-insert = proc do |params|
-  DB[:authors].insert(params)
+  raise Error::Validation.new(result.errors.to_h) if result.failure?
+
+  result.to_h
 end
 
 serialize = proc do |id|
   Oj.dump({ id: id })
 end
 
-build_response = proc do |json|
-  [200, { 'Content-Type' => 'application/json' }, [json]]
+Handler::CreateAuthor = proc do |request|
+  (Handler::Common.method(:read_json_from_request) >>
+  validate >>
+  Repository::Author.method(:create) >>
+  serialize >>
+  Handler::Common.method(:build_ok_json_response)).call(request)
+rescue StandardError => error
+  puts error.backtrace
+  Handler::Common.build_failed_json_response(error.to_json)
 end
-
-Handler::CreateAuthor = read_input_and_parse >> validate >> insert >> serialize >> build_response
