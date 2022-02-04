@@ -1,4 +1,4 @@
-class Error::Validation < StandardError
+class Error::Validation < Error::Base
   def initialize(message)
     @message = message
   end

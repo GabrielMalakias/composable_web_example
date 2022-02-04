@@ -17,7 +17,7 @@ class Application
 
   def self.start!
     Agoo::Server.init(3000, 'root')
-    Agoo::Server.handle(:POST, '/authors', Handler::CreateAuthor)
+    Agoo::Server.handle(:POST, '/authors', Handler::CreateAuthor.new)
     Agoo::Server.handle(:GET, '/authors/*', Handler::FindAuthor)
     Agoo::Server.start
   end
