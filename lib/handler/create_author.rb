@@ -17,3 +17,4 @@ class Handler::CreateAuthor
     Oj.dump({ id: id })
   end
 end
+

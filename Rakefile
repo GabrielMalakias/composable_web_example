@@ -10,6 +10,11 @@ namespace :app do
 
     Application.start!
   end
+
+  desc 'Open a console'
+  task :console do
+    exec 'irb -r ./application'
+  end
 end
 
 namespace :db do

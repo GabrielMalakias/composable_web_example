@@ -1,9 +1,9 @@
 module Validate
   module_function
 
-  def self.[](model)
+  def self.[](contract)
     proc do |params|
-      result = model.validate(params)
+      result = contract.validate(params)
 
       raise Error::Validation.new(result.errors.to_h) if result.failure?
 

@@ -7,3 +7,6 @@ validate = proc do |params|
 end
 
 
+Handler::UpdateAuthor = proc do |request|
+end
+
